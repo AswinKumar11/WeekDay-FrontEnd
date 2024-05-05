@@ -3,7 +3,7 @@ import "./card.css";
 import { useDispatch, useSelector } from "react-redux";
 import { addCurrentOffset } from "../../utils/cardDataSlice";
 import ParagraphContainer from "../ParagraphContainer";
-import Shimmer from "../Shimmer";
+import Shimmer from "../shimmer/Shimmer";
 
 const Card = () => {
   const dispatch = useDispatch();
