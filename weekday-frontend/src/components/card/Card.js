@@ -23,9 +23,9 @@ const Card = () => {
       if (input) observer.current.observe(input);
     },
     [currentCount]
-  );
+  ); //used useCallback to mark the last card with useRef and once the last card is visible will trigger the api with next batch and having count as the dependency which will avoid infinite loop of calling API.
   let salaryRangeMsg;
-  if(cardData.length === 0) return <Shimmer />
+  if (cardData.length === 0) return <Shimmer />;
   return (
     <div className="card-container">
       {cardData &&
@@ -35,56 +35,35 @@ const Card = () => {
               e.salaryCurrencyCode + e.maxJdSalary
             } LPA ✅`;
           else
-            salaryRangeMsg = `${e.salaryCurrencyCode + e.minJdSalary} - ₹${
+            salaryRangeMsg = `${e.salaryCurrencyCode + e.minJdSalary} - ${
               e.salaryCurrencyCode + e.maxJdSalary
             } LPA ✅`;
-          if (cardData.length === i + 1) {
-            return (
-              <div className="card" key={i} ref={lastCard}>
-                <div className="company-logo-details">
-                  <div className="logo-container">
-                    <img src={e.logoUrl} alt="" className="company-logo" />
-                  </div>
-                  <div className="job-details">
-                    <h4 className="company-name">{e.companyName}</h4>
-                    <p className="job-role">{e.jobRole}</p>
-                    <p className="location">{e.location}</p>
-                  </div>
+          return (
+            <div
+              className="card"
+              key={i}
+              ref={cardData.length === i + 1 ? lastCard : null}
+            >
+              <div className="company-logo-details">
+                <div className="logo-container">
+                  <img src={e.logoUrl} alt="" className="company-logo" />
                 </div>
-                <p className="salary">Estimated Salary:{salaryRangeMsg} </p>
-                <ParagraphContainer
-                  text={e.jobDetailsFromCompany}
-                  maxLength={75}
-                />
-                <a href={e.jdLink} target="blank">
-                  <button className="easy-apply-btn">⚡️ Easy apply</button>
-                </a>
-              </div>
-            );
-          } else {
-            return (
-              <div className="card" key={i}>
-                <div className="company-logo-details">
-                  <div className="logo-container">
-                    <img src={e.logoUrl} alt="" className="company-logo" />
-                  </div>
-                  <div className="job-details">
-                    <h4 className="company-name">{e.companyName}</h4>
-                    <p className="job-role">{e.jobRole}</p>
-                    <p className="location">{e.location}</p>
-                  </div>
+                <div className="job-details">
+                  <h4 className="company-name">{e.companyName}</h4>
+                  <p className="job-role">{e.jobRole}</p>
+                  <p className="location">{e.location}</p>
                 </div>
-                <p className="salary">Estimated Salary:{salaryRangeMsg} </p>
-                <ParagraphContainer
-                  text={e.jobDetailsFromCompany}
-                  maxLength={75}
-                />
-                <a href={e.jdLink} target="blank">
-                  <button className="easy-apply-btn">⚡️ Easy apply</button>
-                </a>
               </div>
-            );
-          }
+              <p className="salary">Estimated Salary:{salaryRangeMsg} </p>
+              <ParagraphContainer
+                text={e.jobDetailsFromCompany}
+                maxLength={75}
+              />
+              <a href={e.jdLink} target="blank">
+                <button className="easy-apply-btn">⚡️ Easy apply</button>
+              </a>
+            </div>
+          );
         })}
     </div>
   );

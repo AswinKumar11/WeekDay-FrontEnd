@@ -13,6 +13,10 @@ const cardDataSlice = createSlice({
       state.cardData = [...state.cardData, ...action.payload];
       return;
     },
+    addFilteredCardData: (state, action) => {
+      state.cardData = [...action.payload];
+      return;
+    },
     addTotalCount: (state, action) => {
       state.totalCount = action.payload;
       return;
@@ -28,6 +32,6 @@ const cardDataSlice = createSlice({
   },
 });
 
-export const { addCardData, addTotalCount, addCurrentOffset, addCurrentCount } =
+export const { addCardData, addTotalCount, addCurrentOffset, addCurrentCount, addFilteredCardData } =
   cardDataSlice.actions;
 export default cardDataSlice.reducer;
