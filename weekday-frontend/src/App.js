@@ -7,7 +7,6 @@ function App() {
   return (
     <div className="App">
       <Provider store={appStore}>
-        <h1>WeekDay</h1>
         <Body />
       </Provider>
     </div>

@@ -14,7 +14,7 @@ const cardDataSlice = createSlice({
       return;
     },
     addFilteredCardData: (state, action) => {
-      state.cardData = [...action.payload];
+      state.cardData = action.payload;
       return;
     },
     addTotalCount: (state, action) => {

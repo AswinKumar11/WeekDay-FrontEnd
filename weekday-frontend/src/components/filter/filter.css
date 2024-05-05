@@ -1,12 +1,24 @@
-.filter{
+.filter-div{
+    height: 100px;
+}
+.filter-dropdown{
     margin: 0% 10% 0% 10%;
     display: flex;
-    flex-direction: flex-start;
-    flex-wrap: wrap;
-    /* justify-content: center;
-    align-items: center; */
-    padding: 10px;
+    flex-direction: row;
 }
+.multi-select {
+    --input-width: 350px;
+    --line-height: 30px;
+    margin-top: 5px;
+    margin: 0 10px 0 10px;
+  }
 .dropdown{
     margin: 2%;
+}
+
+.search-input{
+    margin: 0% 10% 0% 10%;
+    padding: 15px;
+    border-radius:10px;
+    width: 250px;
 }
