@@ -7,7 +7,6 @@ const cardDataSlice = createSlice({
     totalCount: 0,
     currentOffset: 1,
     currentCount: 0,
-    hasMoreData: false
   },
   reducers: {
     addCardData: (state, action) => {
@@ -26,18 +25,9 @@ const cardDataSlice = createSlice({
       state.currentCount = action.payload;
       return;
     },
-    addHasMoreData: (state, action) => {
-      state.hasMoreData = action.payload;
-      return;
-    }
   },
 });
 
-export const {
-  addCardData,
-  addTotalCount,
-  addCurrentOffset,
-  addCurrentCount,
-  addHasMoreData
-} = cardDataSlice.actions;
+export const { addCardData, addTotalCount, addCurrentOffset, addCurrentCount } =
+  cardDataSlice.actions;
 export default cardDataSlice.reducer;
